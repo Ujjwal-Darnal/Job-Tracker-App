@@ -1,10 +1,16 @@
+import Sidebar from "./components/Sidebar"
+import "./App.css";
+
 function App(){
   return(
-<div>
-  <header>
-    <h1>Job Tracker</h1>
+<div className="app-layout">
+  
+<Sidebar/>
+  
+    <main className="main-content">
+    <h1>Dashboard</h1>
     <p>Track you job applications and stay organized.</p>
-  </header>
+    </main>
 </div>
   )
 }
