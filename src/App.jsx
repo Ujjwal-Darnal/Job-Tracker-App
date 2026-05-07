@@ -1,4 +1,5 @@
 import Sidebar from "./components/Sidebar"
+import StatCard from "./components/StatCard"
 import "./App.css";
 
 function App(){
@@ -8,10 +9,20 @@ function App(){
 <Sidebar/>
   
     <main className="main-content">
-    <h1>Dashboard</h1>
+    <div className="page-header">
+      <h1>Dashboard</h1>
     <p>Track you job applications and stay organized.</p>
+    </div>
+    
+<section className="stats-grid">
+      <StatCard title="Total Applications" value="12" description="Jobs applied so far" />
+          <StatCard title="Interviews" value="3" description="Upcoming or completed" />
+          <StatCard title="Offers" value="1" description="Positive responses" />
+          <StatCard title="Rejected" value="4" description="Keep improving" />
+</section>
+
     </main>
 </div>
-  )
+  );
 }
-export default App
+export default App;
