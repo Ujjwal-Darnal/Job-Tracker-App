@@ -1,6 +1,7 @@
 import Sidebar from "./components/Sidebar"
 import StatCard from "./components/StatCard"
 import "./App.css";
+import JobForm from "./components/JobForm";
 
 function App(){
   return(
@@ -20,6 +21,8 @@ function App(){
           <StatCard title="Offers" value="1" description="Positive responses" />
           <StatCard title="Rejected" value="4" description="Keep improving" />
 </section>
+
+<JobForm/>
 
     </main>
 </div>

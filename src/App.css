@@ -1,103 +1,157 @@
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
-  font-family: Arial,sans-serif;
+
+body {
+  font-family: Arial, sans-serif;
   background-color: #f9f9fc;
   color: #111827;
 }
-.app-layout{
+
+.app-layout {
   min-height: 100vh;
   display: flex;
 }
-.sidebar{
+
+.sidebar {
   width: 15rem;
   background-color: #111827;
   color: white;
   padding: 1.5rem;
 }
-.logo{
+
+.logo {
   font-size: 1.5rem;
   margin-bottom: 2.5rem;
 }
+
 .nav-menu {
   display: flex;
-flex-direction: column;
-gap: 1rem;
+  flex-direction: column;
+  gap: 1rem;
 }
-.nav-menu a{
+
+.nav-menu a {
   color: #d1d5db;
-text-decoration: none;
-font-size: 1rem;
-padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.375rem;
   transition: background-color 0.2s;
 
 }
+
 .nav-menu a:hover {
   color: white;
   background-color: #1f2937;
 }
-.main-content{
+
+.main-content {
   flex: 1;
   padding: 2rem;
 }
 
-.page-header{
+.page-header {
   margin-bottom: 2rem;
 }
+
 .page-header h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
-.page-header p{
+
+.page-header p {
   color: #6b7280;
 }
 
 /* -----------------------------StatCard--------------------- */
-.stats-grid{
+.stats-grid {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
-.stat-card{
+
+.stat-card {
   background-color: white;
   padding: 1.5rem;
   border-radius: 1rem;
-  box-shadow:  0 0.25rem 1rem rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.06);
 }
 
-.stat-title{
+.stat-title {
   color: #6b7280;
   font-size: 0.9rem;
 }
 
-.stat-value{
+.stat-value {
   font-size: 2rem;
   margin: 0.5rem 0;
 }
 
-.stat-description{
+.stat-description {
   color: #9ca3af;
   font-size: 0.9rem;
 }
 
-@media (max-width:900px){
-  .stats-grid{
-    grid-template-columns: repeat(2,1fr);
+@media (max-width:900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width:600px){
-  .app-layout{
+
+@media (max-width:600px) {
+  .app-layout {
     flex-direction: column;
   }
-  .sidebar{
+
+  .sidebar {
     width: 100%;
   }
 
-  .stats-grid{
+  .stats-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===================Job Form ============= */
+.job-form {
+  margin-top: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.job-form h2 {
+  margin-bottom: 1rem;
+}
+
+.job-form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.job-form input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.job-form button {
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.job-form button:hover {
+  background-color: #4f46e5;
 }
