@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import Sidebar from "./components/Sidebar"
 import StatCard from "./components/StatCard"
 import "./App.css";
 import JobForm from "./components/JobForm";
 
 function App(){
+  const [jobs,setJobs] = useState([]);
+
+  const addJob = (newJob)=>{
+    setJobs([...jobs,newJob]);
+  }
   return(
 <div className="app-layout">
   
@@ -22,7 +28,7 @@ function App(){
           <StatCard title="Rejected" value="4" description="Keep improving" />
 </section>
 
-<JobForm/>
+<JobForm addJob={addJob}/>
 
     </main>
 </div>

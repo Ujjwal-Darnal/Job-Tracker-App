@@ -1,5 +1,5 @@
 import {useState}  from "react"
-function JobForm(){
+function JobForm({addJob}){
 
     const[jobTitle,setJobTitle]= useState("");
 
