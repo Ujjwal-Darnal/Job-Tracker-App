@@ -7,6 +7,11 @@ function JobForm({addJob}){
 
     const handleSubmit = (e) =>{
         e.preventDefault();
+
+        addJob({
+            jobTitle,
+            company,
+        });
         setJobTitle("");
         setCompany("");
     }

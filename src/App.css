@@ -150,8 +150,26 @@ body {
   border: none;
   font-size: 1rem;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .job-form button:hover {
   background-color: #4f46e5;
+}
+
+/* ==========================Joblist=============== */
+.job-list{
+  margin-top: 2rem;
+}
+.job-card{
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  
+}
+.delete-button{
+  margin: 1rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
 }

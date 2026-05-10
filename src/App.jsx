@@ -1,14 +1,23 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import Sidebar from "./components/Sidebar"
 import StatCard from "./components/StatCard"
 import "./App.css";
 import JobForm from "./components/JobForm";
+import JobList from "./components/JobList";
 
 function App(){
   const [jobs,setJobs] = useState([]);
 
+  // =====function to add job======//
   const addJob = (newJob)=>{
     setJobs([...jobs,newJob]);
+  }
+
+  // ========= function to delete job =======//
+  const deleteJob = (indexToDelete) =>{
+    const updatedJobs = jobs.filter((_,index)=>
+    index !== indexToDelete);
+    setJobs(updatedJobs);
   }
   return(
 <div className="app-layout">
@@ -29,6 +38,7 @@ function App(){
 </section>
 
 <JobForm addJob={addJob}/>
+<JobList jobs = {jobs} deleteJob = {deleteJob}/>
 
     </main>
 </div>
