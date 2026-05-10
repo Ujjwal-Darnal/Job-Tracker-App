@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Sidebar from "./components/Sidebar"
 import StatCard from "./components/StatCard"
 import "./App.css";
@@ -6,8 +6,13 @@ import JobForm from "./components/JobForm";
 import JobList from "./components/JobList";
 
 function App(){
-  const [jobs,setJobs] = useState([]);
+  const [jobs,setJobs] = useState(()=>{
+    const savedJobs = localStorage.getItem("jobs");
+    return savedJobs? JSON.parse(savedJobs):[];
+  });
 
+  const [searchJob,setSearchJob] = useState(""
+  );
   // =====function to add job======//
   const addJob = (newJob)=>{
     setJobs([...jobs,newJob]);
@@ -19,6 +24,17 @@ function App(){
     index !== indexToDelete);
     setJobs(updatedJobs);
   }
+
+  //========== function to filtered Job=====//
+const filteredJobs = jobs.filter((job)=>
+job.jobTitle.toLowerCase().includes(searchJob.toLowerCase())||
+job.company.toLowerCase().includes(searchJob.toLowerCase())
+);
+
+  //============= save to local Storage =======//
+  useEffect(()=>{
+    localStorage.setItem("jobs",JSON.stringify(jobs));
+  },[jobs])
   return(
 <div className="app-layout">
   
@@ -38,7 +54,14 @@ function App(){
 </section>
 
 <JobForm addJob={addJob}/>
-<JobList jobs = {jobs} deleteJob = {deleteJob}/>
+
+<input 
+type="text"
+placeholder="Search Jobs..."
+value={searchJob}
+onChange = {(e)=>setSearchJob(e.target.value)} />
+
+<JobList jobs = {filteredJobs} deleteJob = {deleteJob}/>
 
     </main>
 </div>
