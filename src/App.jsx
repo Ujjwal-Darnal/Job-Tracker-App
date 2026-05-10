@@ -25,16 +25,18 @@ function App(){
     setJobs(updatedJobs);
   }
 
+  
+  //============= save to local Storage =======//
+  useEffect(()=>{
+    localStorage.setItem("jobs",JSON.stringify(jobs));
+  },[jobs])
+
+
   //========== function to filtered Job=====//
 const filteredJobs = jobs.filter((job)=>
 job.jobTitle.toLowerCase().includes(searchJob.toLowerCase())||
 job.company.toLowerCase().includes(searchJob.toLowerCase())
 );
-
-  //============= save to local Storage =======//
-  useEffect(()=>{
-    localStorage.setItem("jobs",JSON.stringify(jobs));
-  },[jobs])
   return(
 <div className="app-layout">
   
@@ -55,11 +57,13 @@ job.company.toLowerCase().includes(searchJob.toLowerCase())
 
 <JobForm addJob={addJob}/>
 
-<input 
+<div className="search-bar">
+  <input 
 type="text"
 placeholder="Search Jobs..."
 value={searchJob}
 onChange = {(e)=>setSearchJob(e.target.value)} />
+</div>
 
 <JobList jobs = {filteredJobs} deleteJob = {deleteJob}/>
 

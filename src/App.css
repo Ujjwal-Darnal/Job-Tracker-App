@@ -173,3 +173,23 @@ body {
   padding: 0.6rem 1rem;
   cursor: pointer;
 }
+
+/* ============== Search Bar=========== */
+
+.search-bar {
+  margin: 1rem 0;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
