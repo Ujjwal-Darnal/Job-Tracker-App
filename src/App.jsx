@@ -7,12 +7,16 @@ import JobList from "./components/JobList";
 
 function App(){
   const [jobs,setJobs] = useState(()=>{
+   
     const savedJobs = localStorage.getItem("jobs");
     return savedJobs? JSON.parse(savedJobs):[];
   });
 
   const [searchJob,setSearchJob] = useState(""
   );
+
+  const [statusFilter,setStatusFilter]=useState("All");
+
   // =====function to add job======//
   const addJob = (newJob)=>{
     setJobs([...jobs,newJob]);
@@ -33,10 +37,16 @@ function App(){
 
 
   //========== function to filtered Job=====//
-const filteredJobs = jobs.filter((job)=>
-job.jobTitle.toLowerCase().includes(searchJob.toLowerCase())||
-job.company.toLowerCase().includes(searchJob.toLowerCase())
-);
+const filteredJobs = jobs.filter((job) => {
+  const matchesSearch =
+    job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    job.company.toLowerCase().includes(searchTerm.toLowerCase());
+
+  const matchesStatus =
+    statusFilter === "All" || job.status === statusFilter;
+
+  return matchesSearch && matchesStatus;
+});
   return(
 <div className="app-layout">
   
@@ -64,6 +74,17 @@ placeholder="Search Jobs..."
 value={searchJob}
 onChange = {(e)=>setSearchJob(e.target.value)} />
 </div>
+
+<select 
+value={statusFilter}
+onChange = {(e)=>setStatusFilter(e.target.value)}
+>
+    <option value="All">All</option>
+  <option value="Applied">Applied</option>
+  <option value="Interview">Interview</option>
+  <option value="Offer">Offer</option>
+  <option value="Rejected">Rejected</option>
+</select>
 
 <JobList jobs = {filteredJobs} deleteJob = {deleteJob}/>
 
