@@ -39,14 +39,26 @@ function App(){
   //========== function to filtered Job=====//
 const filteredJobs = jobs.filter((job) => {
   const matchesSearch =
-    job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    job.company.toLowerCase().includes(searchTerm.toLowerCase());
+    job.jobTitle.toLowerCase().includes(searchJob.toLowerCase()) ||
+    job.company.toLowerCase().includes(searchJob.toLowerCase());
 
   const matchesStatus =
     statusFilter === "All" || job.status === statusFilter;
 
   return matchesSearch && matchesStatus;
 });
+
+
+const totalApplications = jobs.length;
+const interviews = jobs.filter(
+  (job)=>job.status==="Interview"
+).length;
+
+const offers = jobs.filter(
+  (job) => job.status === "Offer"
+).length;
+
+const rejected = jobs.filter((job)=>job.status === "Rejected").length;
   return(
 <div className="app-layout">
   
@@ -59,10 +71,11 @@ const filteredJobs = jobs.filter((job) => {
     </div>
     
 <section className="stats-grid">
-      <StatCard title="Total Applications" value="12" description="Jobs applied so far" />
-          <StatCard title="Interviews" value="3" description="Upcoming or completed" />
-          <StatCard title="Offers" value="1" description="Positive responses" />
-          <StatCard title="Rejected" value="4" description="Keep improving" />
+      <StatCard title="Total Applications" value={totalApplications}description="Jobs applied so far" />
+          <StatCard title="Interviews" value={interviews}description="Upcoming or completed" />
+          <StatCard title="Offers" value={offers} description="Positive responses" />
+          <StatCard title="Rejected" value={rejected}
+           description="Keep improving" />
 </section>
 
 <JobForm addJob={addJob}/>
