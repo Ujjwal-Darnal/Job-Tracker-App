@@ -11,6 +11,7 @@ function JobList({jobs,deleteJob}){
         <div  key = {index}className="job-card">
             <h3>{job.jobTitle}</h3>
             <p>{job.company}</p>
+            <p>Status:{job.status}</p>
 
             <button className="delete-button" onClick={()=>deleteJob(index)}>Delete</button>
 

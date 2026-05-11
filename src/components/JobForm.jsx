@@ -5,15 +5,19 @@ function JobForm({addJob}){
 
     const[company,setCompany] = useState("");
 
+    const [status,setStatus] = useState("Applied");
+
     const handleSubmit = (e) =>{
         e.preventDefault();
 
         addJob({
             jobTitle,
             company,
+            status,
         });
         setJobTitle("");
         setCompany("");
+        setStatus("Applied");
     }
 
 
@@ -33,6 +37,16 @@ function JobForm({addJob}){
              placeholder="Company Name" 
              value={company}
              onChange={(e)=> setCompany(e.target.value)}/>
+
+
+             <select 
+             value={status}
+             onChange={(e)=>setStatus(e.target.value)}>
+                <option>Applied</option>
+                <option>Interview</option>
+                <option>Offer</option>
+                <option>Rejected</option>
+             </select>
 
              <button type="submit">Add Job</button>
         </form>
