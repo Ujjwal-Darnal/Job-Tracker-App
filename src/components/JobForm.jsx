@@ -9,6 +9,10 @@ function JobForm({addJob}){
 
     const handleSubmit = (e) =>{
         e.preventDefault();
+        if(!jobTitle||!company){
+            alert("Please fill all fields");
+            return;
+        }
 
         addJob({
             jobTitle,
