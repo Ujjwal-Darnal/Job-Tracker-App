@@ -95,24 +95,25 @@ const updateJobStatus = (indexToUpdate,newStatus) =>{
 
 <JobForm addJob={addJob}/>
 
-<div className="search-bar">
-  <input 
-type="text"
-placeholder="Search Jobs..."
-value={searchJob}
-onChange = {(e)=>setSearchJob(e.target.value)} />
-</div>
+<div className="job-controls">
+  <input
+    type="text"
+    placeholder="Search Jobs..."
+    value={searchJob}
+    onChange={(e) => setSearchJob(e.target.value)}
+  />
 
-<select 
-value={statusFilter}
-onChange = {(e)=>setStatusFilter(e.target.value)}
->
+  <select
+    value={statusFilter}
+    onChange={(e) => setStatusFilter(e.target.value)}
+  >
     <option value="All">All</option>
-  <option value="Applied">Applied</option>
-  <option value="Interview">Interview</option>
-  <option value="Offer">Offer</option>
-  <option value="Rejected">Rejected</option>
-</select>
+    <option value="Applied">Applied</option>
+    <option value="Interview">Interview</option>
+    <option value="Offer">Offer</option>
+    <option value="Rejected">Rejected</option>
+  </select>
+</div>
 
 <JobList jobs = {filteredJobs} deleteJob = {deleteJob}
 updateJobStatus = {updateJobStatus}/>
