@@ -45,7 +45,7 @@ function JobForm({addJob}){
 
              <select 
              value={status}
-             onChange={(e)=>setStatus(e.target.value)}>
+             onChange={(e)=>updateJobs(index.target.value)}>
                 <option>Applied</option>
                 <option>Interview</option>
                 <option>Offer</option>

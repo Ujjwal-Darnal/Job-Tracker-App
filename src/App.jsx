@@ -59,6 +59,21 @@ const offers = jobs.filter(
 ).length;
 
 const rejected = jobs.filter((job)=>job.status === "Rejected").length;
+
+// ================= update job statues directly from the list========//
+
+const updateJobStatus = (indexToUpdate,newStatus) =>{
+  const updatedJobs = jobs.map((job,index)=>{
+    if(index === indexToUpdate){
+      return {
+        ...job,
+        status:newStatus,
+      };
+    }
+    return job;
+  });
+  setJobs(updatedJobs);
+};
   return(
 <div className="app-layout">
   
@@ -99,7 +114,8 @@ onChange = {(e)=>setStatusFilter(e.target.value)}
   <option value="Rejected">Rejected</option>
 </select>
 
-<JobList jobs = {filteredJobs} deleteJob = {deleteJob}/>
+<JobList jobs = {filteredJobs} deleteJob = {deleteJob}
+updateJobStatus = {updateJobStatus}/>
 
     </main>
 </div>
