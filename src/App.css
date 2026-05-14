@@ -174,10 +174,22 @@ body {
   margin-bottom: 1rem;
   
 }
+.edit-button,
 .delete-button{
-  margin: 1rem;
-  padding: 0.6rem 1rem;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 0.6rem;
   cursor: pointer;
+}
+
+.edit-button{
+  background-color: #e0f2fe;
+}
+
+.delete-button{
+  background-color: #fee2e2;
 }
 
 /* ============== Search Bar=========== */

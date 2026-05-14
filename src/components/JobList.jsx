@@ -23,6 +23,10 @@ function JobList({ jobs, deleteJob, updateJobStatus }) {
               <option>Rejected</option>
             </select>
 
+            <button className="edit-button">
+                Edit
+            </button>
+
             <button
               className="delete-button"
               onClick={() => deleteJob(index)}
