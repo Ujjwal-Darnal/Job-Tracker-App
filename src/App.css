@@ -202,5 +202,15 @@ body {
 
 /* =================== App.jsx ========== */
 .job-controls{
- 
+ display: flex;
+ gap: 1rem;
+ margin: 2rem 0;
+ flex-wrap: wrap;
+}
+.job-controls input,
+.job-controls select{
+  padding: 0.8rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.7rem;
+  background: white;
 }
