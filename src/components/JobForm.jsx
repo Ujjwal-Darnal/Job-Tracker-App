@@ -43,14 +43,6 @@ function JobForm({addJob}){
              onChange={(e)=> setCompany(e.target.value)}/>
 
 
-             <select 
-             value={status}
-             onChange={(e)=>updateJobs(index.target.value)}>
-                <option>Applied</option>
-                <option>Interview</option>
-                <option>Offer</option>
-                <option>Rejected</option>
-             </select>
 
              <button type="submit">Add Job</button>
         </form>

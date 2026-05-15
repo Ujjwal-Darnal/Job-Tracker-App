@@ -1,4 +1,28 @@
-function JobList({ jobs, deleteJob, updateJobStatus }) {
+import { useState } from "react";
+function JobList({ jobs, deleteJob, updateJobStatus, updateJob }) {
+
+  const [editingIndex, setEditingIndex] = useState(null);
+
+  const [editedTitle, setEditedTitle] = useState("");
+
+  const [editedCompany, setEditedCompany] = useState("");
+
+  const startEditing = (job, index) => {
+    setEditingIndex(index);
+    setEditedTitle(job.jobTitle);
+    setEditedCompany(job.company)
+  };
+
+  const saveEdit = (job, index) => {
+    updateJob(index, {
+      ...job,
+      jobTitle: editedTitle,
+      company: editedCompany,
+    });
+    setEditingIndex(null);
+  }
+
+
   return (
     <div className="job-list">
       <h2>Job Applications</h2>
@@ -8,9 +32,23 @@ function JobList({ jobs, deleteJob, updateJobStatus }) {
       ) : (
         jobs.map((job, index) => (
           <div key={index} className="job-card">
-            <h3>{job.jobTitle}</h3>
-            <p>{job.company}</p>
 
+            {editingIndex === index ? (
+              <>
+                <input
+                  value={editedTitle}
+                  onChange={(e) => setEditedTitle(e.target.value)} />
+                <input
+                  value={editedCompany}
+                  onChange={(e) => setEditedCompany(e.target.value)}
+                />
+              </>
+            ) : (
+              <>
+                <h3>{job.jobTitle}</h3>
+                <p>{job.company}</p>
+              </>
+            )}
             <select
               value={job.status}
               onChange={(e) =>
@@ -23,9 +61,22 @@ function JobList({ jobs, deleteJob, updateJobStatus }) {
               <option>Rejected</option>
             </select>
 
-            <button className="edit-button">
+            {editingIndex === index ? (
+              <button
+                className="edit-button"
+                onClick={() => saveEdit(job, index)}
+              >
+                Save
+              </button>
+            ) : (
+              <button
+                className="edit-button"
+                onClick={() => startEditing(job, index)}
+              >
                 Edit
-            </button>
+              </button>
+            )}
+
 
             <button
               className="delete-button"

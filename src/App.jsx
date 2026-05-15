@@ -74,6 +74,17 @@ const updateJobStatus = (indexToUpdate,newStatus) =>{
   });
   setJobs(updatedJobs);
 };
+
+//================== update job ===========//
+const updateJob = (indexToUpdate,updatedJob) =>{
+  const updatedJobs = jobs.map((job,index)=>{
+    if(index===indexToUpdate){
+      return updatedJob;
+    }
+    return job;
+  })
+  setJobs(updatedJobs);
+}
   return(
 <div className="app-layout">
   
@@ -116,7 +127,8 @@ const updateJobStatus = (indexToUpdate,newStatus) =>{
 </div>
 
 <JobList jobs = {filteredJobs} deleteJob = {deleteJob}
-updateJobStatus = {updateJobStatus}/>
+updateJobStatus = {updateJobStatus}
+updateJob = {updateJob}/>
 
     </main>
 </div>
