@@ -5,7 +5,7 @@ function JobForm({ addJob }) {
   const [company, setCompany] = useState("");
   const [status, setStatus] = useState("Applied");
   const [deadline, setDeadline] = useState("");
-
+  const[jobLink,setJobLink] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -19,12 +19,14 @@ function JobForm({ addJob }) {
       company,
       status,
       deadline,
+      jobLink
     });
 
     setJobTitle("");
     setCompany("");
     setStatus("Applied");
     setDeadline("");
+    setJobLink("");
   };
 
   return (
@@ -43,6 +45,13 @@ function JobForm({ addJob }) {
         placeholder="Company Name"
         value={company}
         onChange={(e) => setCompany(e.target.value)}
+      />
+
+      <input 
+      type="url"
+      placeholder="Job Application Link"
+      value={jobLink}
+      onChange = {(e)=>setJobLink(e.target.value)}
       />
 
       <input

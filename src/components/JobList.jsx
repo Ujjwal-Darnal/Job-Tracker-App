@@ -47,6 +47,11 @@ function JobList({ jobs, deleteJob, updateJobStatus, updateJob }) {
               <>
                 <h3>{job.jobTitle}</h3>
                 <p>{job.company}</p>
+                <a 
+                href={job.jobLink}
+                target="_blank"
+                rel="noreferrer"
+                >View Job</a>
                 <p>Deadline:{job.deadline|| "No deadline"}</p>
               </>
             )}
