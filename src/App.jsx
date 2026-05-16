@@ -17,6 +17,8 @@ function App(){
 
   const [statusFilter,setStatusFilter]=useState("All");
 
+
+
   // =====function to add job======//
   const addJob = (newJob)=>{
     setJobs([...jobs,newJob]);

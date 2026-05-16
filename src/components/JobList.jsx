@@ -47,6 +47,7 @@ function JobList({ jobs, deleteJob, updateJobStatus, updateJob }) {
               <>
                 <h3>{job.jobTitle}</h3>
                 <p>{job.company}</p>
+                <p>Deadline:{job.deadline|| "No deadline"}</p>
               </>
             )}
             <select

@@ -1,52 +1,69 @@
-import {useState}  from "react"
-function JobForm({addJob}){
+import { useState } from "react";
 
-    const[jobTitle,setJobTitle]= useState("");
+function JobForm({ addJob }) {
+  const [jobTitle, setJobTitle] = useState("");
+  const [company, setCompany] = useState("");
+  const [status, setStatus] = useState("Applied");
+  const [deadline, setDeadline] = useState("");
 
-    const[company,setCompany] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const [status,setStatus] = useState("Applied");
-
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        if(!jobTitle||!company){
-            alert("Please fill all fields");
-            return;
-        }
-
-        addJob({
-            jobTitle,
-            company,
-            status,
-        });
-        setJobTitle("");
-        setCompany("");
-        setStatus("Applied");
+    if (!jobTitle || !company) {
+      alert("Please fill all fields");
+      return;
     }
 
+    addJob({
+      jobTitle,
+      company,
+      status,
+      deadline,
+    });
 
-    return(
-        <form onSubmit={handleSubmit} className="job-form">
-            <h2>Add Job</h2>
+    setJobTitle("");
+    setCompany("");
+    setStatus("Applied");
+    setDeadline("");
+  };
 
-            <input 
-            type="text"
-            placeholder="Job Title"
-            value={jobTitle}
-            onChange={(e) => setJobTitle(e.target.value)}
-             />
+  return (
+    <form onSubmit={handleSubmit} className="job-form">
+      <h2>Add Job</h2>
 
-             <input 
-             type="text"
-             placeholder="Company Name" 
-             value={company}
-             onChange={(e)=> setCompany(e.target.value)}/>
+      <input
+        type="text"
+        placeholder="Job Title"
+        value={jobTitle}
+        onChange={(e) => setJobTitle(e.target.value)}
+      />
 
+      <input
+        type="text"
+        placeholder="Company Name"
+        value={company}
+        onChange={(e) => setCompany(e.target.value)}
+      />
 
+      <input
+        type="date"
+        value={deadline}
+        onChange={(e) => setDeadline(e.target.value)}
+      />
 
-             <button type="submit">Add Job</button>
-        </form>
-    )
+      <select
+        value={status}
+        onChange={(e) => setStatus(e.target.value)}
+      >
+        <option>Applied</option>
+        <option>Interview</option>
+        <option>Offer</option>
+        <option>Rejected</option>
+      </select>
+
+      <button type="submit">Add Job</button>
+    </form>
+  );
 }
 
 export default JobForm;
