@@ -163,6 +163,15 @@ body {
   margin-bottom: 1rem;
 }
 
+.job-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.6rem;
+  resize: vertical;
+}
+
 /* ==========================Joblist=============== */
 .job-list{
   margin-top: 2rem;

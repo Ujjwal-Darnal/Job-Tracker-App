@@ -47,6 +47,7 @@ function JobList({ jobs, deleteJob, updateJobStatus, updateJob }) {
               <>
                 <h3>{job.jobTitle}</h3>
                 <p>{job.company}</p>
+                {job.notes && <p>Notes: {job.notes}</p>}
                 {job.jobLink && (
                   <a 
                 href={job.jobLink}

@@ -6,6 +6,8 @@ function JobForm({ addJob }) {
   const [status, setStatus] = useState("Applied");
   const [deadline, setDeadline] = useState("");
   const[jobLink,setJobLink] = useState("");
+  const[notes,setNotes] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -19,7 +21,8 @@ function JobForm({ addJob }) {
       company,
       status,
       deadline,
-      jobLink
+      jobLink,
+      notes,
     });
 
     setJobTitle("");
@@ -27,6 +30,7 @@ function JobForm({ addJob }) {
     setStatus("Applied");
     setDeadline("");
     setJobLink("");
+    setNotes("");
   };
 
   return (
@@ -69,6 +73,13 @@ function JobForm({ addJob }) {
         <option>Offer</option>
         <option>Rejected</option>
       </select>
+
+
+    <textarea
+    placeholder="Notes,follow-up,interview details.."
+    value={notes}
+    onChange={(e)=>setNotes(e.target.value)}
+    ></textarea>
 
       <button type="submit">Add Job</button>
     </form>
