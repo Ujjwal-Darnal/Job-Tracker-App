@@ -17,7 +17,10 @@ function App() {
 
   const [sortOrder, setSortOrder] = useState("latest");
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(()=>{
+    const savedTheme = localStorage.getItem("darkMode");
+    return savedTheme === "ture";
+  })
 
   // =====function to add job======//
   const addJob = (newJob) => {
@@ -35,6 +38,12 @@ function App() {
     localStorage.setItem("jobs", JSON.stringify(jobs));
   }, [jobs]);
 
+  //====== save dark theme even after refresh====//
+  useEffect(()=>{
+    localStorage.setItem("darkMode",darkMode);
+  },[darkMode]);
+
+  
   //========== function to filtered Job=====//
   const filteredJobs = jobs.filter((job) => {
     const matchesSearch =
