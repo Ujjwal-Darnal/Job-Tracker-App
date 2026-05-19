@@ -235,3 +235,40 @@ body {
   border-radius: 0.7rem;
   background: white;
 }
+.theme-toggle {
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.dark {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+.dark .main-content {
+  background-color: #111827;
+}
+
+.dark .stat-card,
+.dark .job-form,
+.dark .job-card {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #374151;
+  color: #f9fafb;
+  border: 1px solid #4b5563;
+}
+
+.dark .page-header p,
+.dark .stat-title,
+.dark .stat-description {
+  color: #d1d5db;
+}
