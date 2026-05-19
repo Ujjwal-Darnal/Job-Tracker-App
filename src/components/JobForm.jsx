@@ -17,6 +17,7 @@ function JobForm({ addJob }) {
     }
 
     addJob({
+      id:crypto.randomUUID(),
       jobTitle,
       company,
       status,

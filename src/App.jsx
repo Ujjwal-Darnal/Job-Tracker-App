@@ -17,7 +17,7 @@ function App(){
 
   const [statusFilter,setStatusFilter]=useState("All");
 
-
+  const[sortOrder,setSortOrder] = useState("latest");
 
   // =====function to add job======//
   const addJob = (newJob)=>{
@@ -25,12 +25,13 @@ function App(){
   }
 
   // ========= function to delete job =======//
-  const deleteJob = (indexToDelete) =>{
-    const updatedJobs = jobs.filter((_,index)=>
-    index !== indexToDelete);
-    setJobs(updatedJobs);
-  }
+  const deleteJob = (idToDelete) => {
+  const updatedJobs = jobs.filter(
+    (job) => job.id !== idToDelete
+  );
 
+  setJobs(updatedJobs);
+};
   
   //============= save to local Storage =======//
   useEffect(()=>{
@@ -50,6 +51,12 @@ const filteredJobs = jobs.filter((job) => {
   return matchesSearch && matchesStatus;
 });
 
+const sortedJobs = [...filteredJobs].sort((a,b)=>{
+  if(sortOrder === "latest"){
+    return new Date(b.deadline) - new Date(a.deadline);
+  }
+  return new Date(a.deadline) - new Date(b.deadline)
+});
 
 const totalApplications = jobs.length;
 const interviews = jobs.filter(
@@ -64,9 +71,9 @@ const rejected = jobs.filter((job)=>job.status === "Rejected").length;
 
 // ================= update job statues directly from the list========//
 
-const updateJobStatus = (indexToUpdate,newStatus) =>{
+const updateJobStatus = (idToUpdate,newStatus) =>{
   const updatedJobs = jobs.map((job,index)=>{
-    if(index === indexToUpdate){
+    if(index === idToUpdate){
       return {
         ...job,
         status:newStatus,
@@ -126,9 +133,17 @@ const updateJob = (indexToUpdate,updatedJob) =>{
     <option value="Offer">Offer</option>
     <option value="Rejected">Rejected</option>
   </select>
+
+  <select 
+  value={sortOrder}
+  onChange = {(e)=>setSortOrder(e.target.value)}
+  >
+    <option value="latest">Latest Deadline</option>
+    <option value="oldest">Oldest Deadline</option>
+  </select>
 </div>
 
-<JobList jobs = {filteredJobs} deleteJob = {deleteJob}
+<JobList jobs = {sortedJobs} deleteJob = {deleteJob}
 updateJobStatus = {updateJobStatus}
 updateJob = {updateJob}/>
 
