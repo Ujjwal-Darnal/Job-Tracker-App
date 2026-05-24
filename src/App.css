@@ -284,3 +284,28 @@ body {
 .dark .empty-dashboard {
   background-color: #1f2937;
 }
+
+/* ================= Status Badge =========== */
+.status-badge {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-bottom: 0.7rem;
+}
+
+.applied {
+  background: #dbeafe;
+}
+
+.interview {
+  background: #fef3c7;
+}
+
+.offer {
+  background: #dcfce7;
+}
+
+.rejected {
+  background: #fee2e2;
+}

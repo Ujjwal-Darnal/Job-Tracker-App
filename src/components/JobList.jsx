@@ -1,4 +1,5 @@
 import { useState } from "react";
+import StatusBadge from "./StatusBadge";
 
 function JobList({ jobs, deleteJob, updateJobStatus, updateJob }) {
   const [editingId, setEditingId] = useState(null);
@@ -57,6 +58,7 @@ function JobList({ jobs, deleteJob, updateJobStatus, updateJob }) {
                 <p>Deadline: {job.deadline || "No deadline"}</p>
               </>
             )}
+            <StatusBadge status={job.status}/>
 
             <select
               value={job.status}
