@@ -19,7 +19,7 @@ function App() {
 
   const [darkMode, setDarkMode] = useState(()=>{
     const savedTheme = localStorage.getItem("darkMode");
-    return savedTheme === "ture";
+    return savedTheme === "true";
   })
 
   // =====function to add job======//
@@ -43,7 +43,7 @@ function App() {
     localStorage.setItem("darkMode",darkMode);
   },[darkMode]);
 
-  
+
   //========== function to filtered Job=====//
   const filteredJobs = jobs.filter((job) => {
     const matchesSearch =
@@ -131,43 +131,51 @@ function App() {
             description="Keep improving"
           />
         </section>
+   <JobForm addJob={addJob} />
 
-        <JobForm addJob={addJob} />
+{jobs.length === 0 ? (
+  <div className="empty-dashboard">
+    <h2>No job applications yet</h2>
+    <p>Start adding jobs to track applications, interviews, and deadlines.</p>
+  </div>
+) : (
+  <>
+    <div className="job-controls">
+      <input
+        type="text"
+        placeholder="Search Jobs..."
+        value={searchJob}
+        onChange={(e) => setSearchJob(e.target.value)}
+      />
 
-        <div className="job-controls">
-          <input
-            type="text"
-            placeholder="Search Jobs..."
-            value={searchJob}
-            onChange={(e) => setSearchJob(e.target.value)}
-          />
+      <select
+        value={statusFilter}
+        onChange={(e) => setStatusFilter(e.target.value)}
+      >
+        <option value="All">All</option>
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Offer">Offer</option>
+        <option value="Rejected">Rejected</option>
+      </select>
 
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-          >
-            <option value="All">All</option>
-            <option value="Applied">Applied</option>
-            <option value="Interview">Interview</option>
-            <option value="Offer">Offer</option>
-            <option value="Rejected">Rejected</option>
-          </select>
+      <select
+        value={sortOrder}
+        onChange={(e) => setSortOrder(e.target.value)}
+      >
+        <option value="latest">Latest Deadline</option>
+        <option value="oldest">Oldest Deadline</option>
+      </select>
+    </div>
 
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-          >
-            <option value="latest">Latest Deadline</option>
-            <option value="oldest">Oldest Deadline</option>
-          </select>
-        </div>
-
-        <JobList
-          jobs={sortedJobs}
-          deleteJob={deleteJob}
-          updateJobStatus={updateJobStatus}
-          updateJob={updateJob}
-        />
+    <JobList
+      jobs={sortedJobs}
+      deleteJob={deleteJob}
+      updateJobStatus={updateJobStatus}
+      updateJob={updateJob}
+    />
+  </>
+)}
       </main>
     </div>
   );

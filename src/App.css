@@ -272,3 +272,15 @@ body {
 .dark .stat-description {
   color: #d1d5db;
 }
+
+.empty-dashboard {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.dark .empty-dashboard {
+  background-color: #1f2937;
+}
