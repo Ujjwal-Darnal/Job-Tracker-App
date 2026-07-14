@@ -24,7 +24,7 @@ function JobList({ jobs, deleteJob, updateJobStatus, updateJob }) {
 
   return (
     <div className="job-list">
-      <h2>Job Applications</h2>
+      <h2>My Applications</h2>
 
       {jobs.length === 0 ? (
         <p>No jobs added yet.</p>

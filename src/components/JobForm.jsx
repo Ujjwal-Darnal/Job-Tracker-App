@@ -36,7 +36,7 @@ function JobForm({ addJob }) {
 
   return (
     <form onSubmit={handleSubmit} className="job-form">
-      <h2>Add Job</h2>
+      <h2>Add Application</h2>
 
       <input
         type="text"
@@ -82,7 +82,7 @@ function JobForm({ addJob }) {
     onChange={(e)=>setNotes(e.target.value)}
     ></textarea>
 
-      <button type="submit">Add Job</button>
+      <button type="submit">Add Application</button>
     </form>
   );
 }
